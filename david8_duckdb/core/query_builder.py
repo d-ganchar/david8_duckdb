@@ -1,9 +1,9 @@
 from david8.core.base_query_builder import BaseQueryBuilder as _BaseQueryBuilder
 from david8.protocols.sql import AliasedProtocol, ExprProtocol, FunctionProtocol
 
-from .select_query import DuckDbSelect
 from ..protocols.query_builder import QueryBuilderProtocol
 from ..protocols.sql import SelectProtocol
+from .select_query import DuckDbSelect
 
 
 class DuckDbQueryBuilder(QueryBuilderProtocol, _BaseQueryBuilder):
