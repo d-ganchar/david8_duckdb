@@ -6,6 +6,7 @@ from david8.protocols.dialect import DialectProtocol
 from ..protocols.sql import SelectProtocol
 
 
+@dataclasses.dataclass(slots=True)
 class DuckDbSelect(_BaseSelect, SelectProtocol):
     from_files: tuple[str, tuple[str, ...]] = dataclasses.field(default_factory=tuple)
 
@@ -39,7 +40,7 @@ class DuckDbSelect(_BaseSelect, SelectProtocol):
 
     def _from_to_sql(self, dialect: DialectProtocol) -> str:
         if not self.from_files:
-            return super()._from_to_sql(dialect)
+            return _BaseSelect._from_to_sql(self, dialect)
 
         if len(self.from_files[1]) > 1:
             files = str(list(self.from_files[1]))
