@@ -17,3 +17,13 @@ class QueryBuilderProtocol(_QueryBuilderProtocol):
         example:
             qb.copy_to('events', 'events.parquet', {'FORMAT': 'parquet', 'DELIMITER': "','", 'APPEND': True})
         """
+
+    def export_db(self, name: str, options: dict | None = None) -> QueryProtocol:
+        """
+        https://duckdb.org/docs/stable/sql/statements/export
+        """
+
+    def import_db(self, name: str) -> QueryProtocol:
+        """
+        https://duckdb.org/docs/stable/sql/statements/export
+        """
