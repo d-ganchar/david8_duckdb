@@ -8,7 +8,7 @@ class QueryBuilderProtocol(_QueryBuilderProtocol):
     def select(self, *args: str | AliasedProtocol | ExprProtocol | FunctionProtocol) -> SelectProtocol:
         pass
 
-    def copy_to(self, source: str | SelectProtocol, target: str, copy_options: dict = None) -> QueryProtocol:
+    def copy_to(self, source: str | SelectProtocol, target: str, copy_options: dict | None = None) -> QueryProtocol:
         """
         :param source: query or table
         :param target: file name

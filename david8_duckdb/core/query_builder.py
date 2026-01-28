@@ -11,5 +11,5 @@ class DuckDbQueryBuilder(QueryBuilderProtocol, _BaseQueryBuilder):
     def select(self, *args: str | AliasedProtocol | ExprProtocol | FunctionProtocol) -> SelectProtocol:
         return DuckDbSelect(select_columns=args, dialect=self._dialect)
 
-    def copy_to(self, source: str | SelectProtocol, target: str, copy_options: dict = None) -> QueryProtocol:
+    def copy_to(self, source: str | SelectProtocol, target: str, copy_options: dict | None = None) -> QueryProtocol:
         return CopyToQuery(dialect=self._dialect, source=source, target=target, copy_options=copy_options)

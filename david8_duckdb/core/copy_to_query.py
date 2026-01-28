@@ -10,7 +10,7 @@ from david8_duckdb.protocols.sql import SelectProtocol
 class CopyToQuery(BaseQuery):
     source: str | SelectProtocol
     target: str
-    copy_options: dict = None
+    copy_options: dict | None = None
 
     def _render_sql(self, dialect: DialectProtocol) -> str:
         source = f'({self.source.get_sql(dialect)})' if isinstance(self.source, SelectProtocol) else self.source
