@@ -1,7 +1,7 @@
 from collections.abc import Iterable
 from typing import Any
 
-from david8.protocols.sql import LogicalOperatorProtocol, PredicateProtocol
+from david8.protocols.sql import FunctionProtocol, LogicalOperatorProtocol, PredicateProtocol
 from david8.protocols.sql import QueryProtocol as _QueryProtocol
 from david8.protocols.sql import SelectProtocol as _SelectProtocol
 
@@ -64,4 +64,21 @@ class MergeIntoProtocol(_QueryProtocol):
         pass
 
     def insert_when_not_matched(self) -> 'MergeIntoProtocol':
+        pass
+
+
+class PivotProtocol(_QueryProtocol):
+    def on(self, *columns: str) -> 'PivotProtocol':
+        pass
+
+    def using(self, *values: FunctionProtocol) -> 'PivotProtocol':
+        pass
+
+    def group_by(self, *columns: str) -> 'PivotProtocol':
+        pass
+
+    def order_by(self, *columns: str, desc: bool = True) -> 'PivotProtocol':
+        pass
+
+    def limit(self, value: int) -> 'PivotProtocol':
         pass
