@@ -1,7 +1,7 @@
 from david8.protocols.query_builder import QueryBuilderProtocol as _QueryBuilderProtocol
 from david8.protocols.sql import AliasedProtocol, ExprProtocol, FunctionProtocol, QueryProtocol
 
-from ..protocols.sql import SelectProtocol
+from ..protocols.sql import MergeIntoProtocol, SelectProtocol
 
 
 class QueryBuilderProtocol(_QueryBuilderProtocol):
@@ -26,4 +26,9 @@ class QueryBuilderProtocol(_QueryBuilderProtocol):
     def import_db(self, name: str) -> QueryProtocol:
         """
         https://duckdb.org/docs/stable/sql/statements/export
+        """
+
+    def merge_into(self, table: str) -> MergeIntoProtocol:
+        """
+        https://duckdb.org/docs/stable/sql/statements/merge_into
         """

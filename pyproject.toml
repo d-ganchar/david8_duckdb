@@ -47,6 +47,7 @@ dev = [
     "parameterized",
     "pytest",
     "pytest-cov>=7.0.0",
+    "duckdb>=1.4.4",
 ]
 
 [lint.select]

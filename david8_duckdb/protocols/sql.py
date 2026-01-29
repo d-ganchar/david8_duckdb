@@ -1,3 +1,8 @@
+from collections.abc import Iterable
+from typing import Any
+
+from david8.protocols.sql import LogicalOperatorProtocol, PredicateProtocol
+from david8.protocols.sql import QueryProtocol as _QueryProtocol
 from david8.protocols.sql import SelectProtocol as _SelectProtocol
 
 
@@ -36,3 +41,27 @@ class SelectProtocol(_SelectProtocol):
         """
         read_xlsx(): https://duckdb.org/docs/stable/core_extensions/excel
         """
+
+
+class MergeIntoProtocol(_QueryProtocol):
+    def using(self, query: SelectProtocol, as_: str, columns: Iterable[str] | None = None) -> 'MergeIntoProtocol':
+        pass
+
+    def on(self, *args: LogicalOperatorProtocol | PredicateProtocol) -> 'MergeIntoProtocol':
+        pass
+
+    def update_when_matched(
+        self,
+        operator: LogicalOperatorProtocol | None = None,
+        columns: dict[str, Any] | None = None,
+    ) -> 'MergeIntoProtocol':
+        pass
+
+    def delete_when_matched(self, operator: LogicalOperatorProtocol) -> 'MergeIntoProtocol':
+        pass
+
+    def returning(self, *args: str) -> 'MergeIntoProtocol':
+        pass
+
+    def insert_when_not_matched(self) -> 'MergeIntoProtocol':
+        pass
