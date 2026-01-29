@@ -82,3 +82,17 @@ class PivotProtocol(_QueryProtocol):
 
     def limit(self, value: int) -> 'PivotProtocol':
         pass
+
+
+class UnpivotProtocol(_QueryProtocol):
+    def into(self, name: str, value: str | Iterable[str]) -> 'UnpivotProtocol':
+        pass
+
+    def on(self, *columns: str) -> 'UnpivotProtocol':
+        pass
+
+    def order_by(self, *columns: str, desc: bool = True) -> 'UnpivotProtocol':
+        pass
+
+    def limit(self, value: int) -> 'UnpivotProtocol':
+        pass

@@ -29,3 +29,25 @@ class TestDQL(BaseTest):
             'ORDER BY total DESC, country '
             'LIMIT 10'
         )
+
+    def test_unpivot(self):
+        query = (
+            BaseTest
+            .qb
+            .unpivot('monthly_sales')
+            .on('jan', 'feb', 'mar', 'apr', 'may', 'jun')
+            .into('month', 'sales')
+            .order_by('sales')
+            .order_by('month', desc=False)
+            .limit(10)
+        )
+
+        self.assertEqual(
+            query.get_sql(),
+            'UNPIVOT monthly_sales '
+            'ON jan, feb, mar, apr, may, jun '
+            'INTO NAME month '
+            'VALUE sales '
+            'ORDER BY sales DESC, month '
+            'LIMIT 10'
+        )

@@ -2,10 +2,10 @@ from david8.core.base_query_builder import BaseQueryBuilder as _BaseQueryBuilder
 from david8.protocols.sql import AliasedProtocol, ExprProtocol, FunctionProtocol, QueryProtocol
 
 from ..protocols.query_builder import QueryBuilderProtocol
-from ..protocols.sql import MergeIntoProtocol, PivotProtocol, SelectProtocol
+from ..protocols.sql import MergeIntoProtocol, PivotProtocol, SelectProtocol, UnpivotProtocol
 from .copy_to_query import CopyToQuery
 from .dml import MergeIntoQuery
-from .dql import PivotQuery
+from .dql import PivotQuery, UnpivotQuery
 from .export_db_query import ExportImportDbQuery
 from .select_query import DuckDbSelect
 
@@ -28,3 +28,6 @@ class DuckDbQueryBuilder(QueryBuilderProtocol, _BaseQueryBuilder):
 
     def pivot(self, table: str) -> PivotProtocol:
         return PivotQuery(dialect=self._dialect, table=table)
+
+    def unpivot(self, table: str) -> UnpivotProtocol:
+        return UnpivotQuery(dialect=self._dialect, table=table)

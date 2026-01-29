@@ -1,7 +1,7 @@
 from david8.protocols.query_builder import QueryBuilderProtocol as _QueryBuilderProtocol
 from david8.protocols.sql import AliasedProtocol, ExprProtocol, FunctionProtocol, QueryProtocol
 
-from ..protocols.sql import MergeIntoProtocol, PivotProtocol, SelectProtocol
+from ..protocols.sql import MergeIntoProtocol, PivotProtocol, SelectProtocol, UnpivotProtocol
 
 
 class QueryBuilderProtocol(_QueryBuilderProtocol):
@@ -36,4 +36,9 @@ class QueryBuilderProtocol(_QueryBuilderProtocol):
     def pivot(self, table: str) -> PivotProtocol:
         """
         https://duckdb.org/docs/stable/sql/statements/pivot
+        """
+
+    def unpivot(self, table: str) -> UnpivotProtocol:
+        """
+        https://duckdb.org/docs/stable/sql/statements/unpivot
         """
