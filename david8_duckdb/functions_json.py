@@ -18,3 +18,4 @@ class _JsonWithPathFactory(_FnCallableFactory):
 
 
 json_keys = _JsonWithPathFactory(name='json_keys')
+json_extract = _JsonWithPathFactory(name='json_extract')
